@@ -1,0 +1,14 @@
+1. Listar todos los productos que tienen como unidad de medida a Kg.
+>>> from catalogo.models import Producto, UnidadMed, Categoria
+>>> Producto.objects.filter(unidad_med__codigo='Kg')
+<QuerySet [<Producto: Arroz (A01)>, <Producto: Azucar (AZU01)>]>
+
+>>> print(Producto.objects.filter(unidad_med__codigo='Kg').query)
+SELECT "catalogo_producto"."id", "catalogo_producto"."nombre", "catalogo_producto"."codigo", "catalogo_producto"."detalle", "catalogo_producto"."precio_venta", "catalogo_producto"."unidad_med_id" FROM "catalogo_producto" INNER JOIN "catalogo_unidadmed" ON ("catalogo_producto"."unidad_med_id" = "catalogo_unidadmed"."id") WHERE "catalogo_unidadmed"."codigo" = Kg
+
+2.Listar todos las unidades de medidas que no han sido asignadas o usadas por ningún producto.
+
+3. Listar todos los productos que tienen como categorías a Categoria 01 y Categoria 02.
+
+
+4.Listar todos las categorías que no han sido asignadas o usadas por ningún producto.
